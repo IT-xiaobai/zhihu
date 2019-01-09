@@ -11,7 +11,7 @@ from scrapy import Item,Field
 class ZhihuspiderItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    '''
+    """
     son_href = Field()
     son_name = Field()
     son_content = Field()
@@ -21,7 +21,7 @@ class ZhihuspiderItem(Item):
     name = Field()
     question_id = Field()
     topic = Field()
-    '''
+    """
     question = Field()
     name = Field()    
     follower = Field()

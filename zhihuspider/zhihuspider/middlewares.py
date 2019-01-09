@@ -6,6 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from faker import Faker
 
 
 class ZhihuspiderSpiderMiddleware(object):
@@ -55,6 +56,7 @@ class ZhihuspiderSpiderMiddleware(object):
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
 
+
 '''
 class ZhihuspiderDownloaderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -102,13 +104,15 @@ class ZhihuspiderDownloaderMiddleware(object):
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
 '''
-# 设置随机切换User-Agent中间件
 
-from faker import Faker
+
 class ZhihuspiderDownloadmiddlewareRandomUseragent(object):
+    """
+    设置随机切换User-Agent中间件
+    """
     def __init__(self):
         self.fake = Faker()
 
-    def process_request(self,request,spider):
+    def process_request(self, request, spider):
         # print(self.fake.user_agent())
-        request.headers.setdefault('User-Agent',self.fake.user_agent())
+        request.headers.setdefault('User-Agent', self.fake.user_agent())
